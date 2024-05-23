@@ -1,0 +1,84 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement_0415\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CC5C5986-437D-489C-80B6-3ECCBBA75038}|..\\QuizeManagement.Repository\\QuizeManagement.Repository.csproj|d:\\dhruvik\\quizmanagement\\quizmanagement\\quizemanagement.repository\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A277E63-ABA5-4FA5-B6FF-68B4C92186AB}|..\\QuizeManagement.Models\\QuizeManagement.Models.csproj|d:\\dhruvik\\quizmanagement\\quizmanagement\\quizemanagement.models\\viewmodel\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30ADE294-950E-4F73-9874-61E564E1CD6D}|..\\QuizeManagement.API\\QuizeManagement.API.csproj|d:\\dhruvik\\quizmanagement\\quizmanagement\\quizemanagement.api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1830D2C-A0EE-438B-AE4E-478D5C397760}|..\\QuizeManagement.Helper\\QuizeManagement.Helper.csproj|d:\\dhruvik\\quizmanagement\\quizmanagement\\quizemanagement.helper\\sphelper\\sphelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Models\\ViewModel\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "..\\QuizeManagement.Models\\ViewModel\\RegisterModel.cs",
+              "ToolTip": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Models\\ViewModel\\RegisterModel.cs",
+              "RelativeToolTip": "..\\QuizeManagement.Models\\ViewModel\\RegisterModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T18:14:05.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpHelper.cs",
+              "DocumentMoniker": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Helper\\SpHelper\\SpHelper.cs",
+              "RelativeDocumentMoniker": "..\\QuizeManagement.Helper\\SpHelper\\SpHelper.cs",
+              "ToolTip": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Helper\\SpHelper\\SpHelper.cs",
+              "RelativeToolTip": "..\\QuizeManagement.Helper\\SpHelper\\SpHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T18:07:32.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Repository\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\QuizeManagement.Repository\\Service\\UserService.cs",
+              "ToolTip": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.Repository\\Service\\UserService.cs",
+              "RelativeToolTip": "..\\QuizeManagement.Repository\\Service\\UserService.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAtwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T18:04:16.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.API\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "..\\QuizeManagement.API\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Dhruvik\\QuizManagement\\QuizManagement\\QuizeManagement.API\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "..\\QuizeManagement.API\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAASwAsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T18:03:34.486Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

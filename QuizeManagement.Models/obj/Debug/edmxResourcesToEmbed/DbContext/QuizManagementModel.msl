@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuizeManagement_0415ModelStoreContainer" CdmEntityContainer="QuizeManagement_0415Entities">
+    <EntitySetMapping Name="Options_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.Options_Table">
+        <MappingFragment StoreEntitySet="Options_Table">
+          <ScalarProperty Name="Option_id" ColumnName="Option_id" />
+          <ScalarProperty Name="Question_id" ColumnName="Question_id" />
+          <ScalarProperty Name="Option_text" ColumnName="Option_text" />
+          <ScalarProperty Name="Is_correct" ColumnName="Is_correct" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.Question_Table">
+        <MappingFragment StoreEntitySet="Question_Table">
+          <ScalarProperty Name="Question_id" ColumnName="Question_id" />
+          <ScalarProperty Name="Quiz_id" ColumnName="Quiz_id" />
+          <ScalarProperty Name="Question_txt" ColumnName="Question_txt" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quizzes_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.Quizzes_Table">
+        <MappingFragment StoreEntitySet="Quizzes_Table">
+          <ScalarProperty Name="Quiz_id" ColumnName="Quiz_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Result_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.Result_Table">
+        <MappingFragment StoreEntitySet="Result_Table">
+          <ScalarProperty Name="Result_id" ColumnName="Result_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Quiz_id" ColumnName="Quiz_id" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Answer_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.User_Answer_Table">
+        <MappingFragment StoreEntitySet="User_Answer_Table">
+          <ScalarProperty Name="Answer_id" ColumnName="Answer_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Quiz_id" ColumnName="Quiz_id" />
+          <ScalarProperty Name="Question_id" ColumnName="Question_id" />
+          <ScalarProperty Name="Selected_Option_id" ColumnName="Selected_Option_id" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Table">
+      <EntityTypeMapping TypeName="QuizeManagement_0415Model.User_Table">
+        <MappingFragment StoreEntitySet="User_Table">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password_hash" ColumnName="Password_hash" />
+          <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

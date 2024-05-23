@@ -1,0 +1,6 @@
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\bin\Debug\QuizeManagement.Helper.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\bin\Debug\QuizeManagement.Helper.pdb
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\obj\Debug\QuizeManagement_0415.Helper.csproj.AssemblyReference.cache
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\obj\Debug\QuizeManagement_0415.Helper.csproj.CoreCompileInputs.cache
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\obj\Debug\QuizeManagement.Helper.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Helper\obj\Debug\QuizeManagement.Helper.pdb

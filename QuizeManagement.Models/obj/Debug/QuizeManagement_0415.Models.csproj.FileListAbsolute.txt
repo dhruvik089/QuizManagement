@@ -1,0 +1,12 @@
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll.config
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.pdb
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\EntityFramework.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\EntityFramework.xml
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\obj\Debug\QuizeManagement_0415.Models.csproj.AssemblyReference.cache
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\obj\Debug\QuizeManagement_0415.Models.csproj.CoreCompileInputs.cache
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\obj\Debug\QuizeManagement_0415.Models.csproj.CopyComplete
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
+C:\Dhruvik\DotNET\QuizeManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb
