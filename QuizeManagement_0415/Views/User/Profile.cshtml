@@ -1,0 +1,33 @@
+﻿@{ ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml"; }
+
+
+<div class="container">
+    <h2>Profile</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>User Id</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@ViewBag.userDetails.User_id</td>
+                <td>@ViewBag.userDetails.Username</td>
+                <td>@ViewBag.userDetails.Email</td>
+                <td>
+                    @Html.ActionLink("Update", "Update", "User", htmlAttributes: new {@class ="btn btn-primary" })
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+

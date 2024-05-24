@@ -31,5 +31,6 @@ namespace QuizeManagement.Models.DbContext
         public virtual DbSet<Result_Table> Result_Table { get; set; }
         public virtual DbSet<User_Answer_Table> User_Answer_Table { get; set; }
         public virtual DbSet<User_Table> User_Table { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }

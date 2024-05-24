@@ -22,3 +22,14 @@ D:\Dhruvik\QuizManagement\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeM
 D:\Dhruvik\QuizManagement\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeMan.F4DE9809.Up2Date
 D:\Dhruvik\QuizManagement\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
 D:\Dhruvik\QuizManagement\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll.config
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.pdb
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\EntityFramework.dll
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\EntityFramework.xml
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.CoreCompileInputs.cache
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.CopyComplete
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb

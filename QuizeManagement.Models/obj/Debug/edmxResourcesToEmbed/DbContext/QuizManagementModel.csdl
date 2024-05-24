@@ -233,5 +233,15 @@
       <End Role="User_Table" EntitySet="User_Table" />
       <End Role="User_Answer_Table" EntitySet="User_Answer_Table" />
     </AssociationSet>
+    <EntitySet Name="Admin" EntityType="QuizeManagement_0415Model.Admin" />
   </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_id" />
+    </Key>
+    <Property Name="Admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

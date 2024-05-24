@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +16,11 @@ namespace QuizeManagement.Repository.Service
     public class UserService : IUserInterface
     {
         QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
-
         public bool AddUser(RegisterModel _registerModel)
         {
 
             string Username = _registerModel.Username;
-            string password = _registerModel.Password;
+            string password = HashPassword(_registerModel.Password);
             string Email = _registerModel.Email;
 
 
@@ -32,12 +32,11 @@ namespace QuizeManagement.Repository.Service
                 };
             Dictionary<string, object> _checkUser = new Dictionary<string, object>
                 {
-
-                            { "@Password_hash", password },
                             { "@Email", Email }
                 };
-            DataTable dataTable = GenericRepository.GetSingleDataTable(SpHelper.CheckRegisterLogin, _checkUser);
-            if (dataTable == null)
+            bool IsEmailExist = GenericRepository.IsEmailExist(SpHelper.CheckingEmailExistsOrNot, _checkUser);
+
+            if (IsEmailExist)
             {
                 GenericRepository.GetSingleDataTable(SpHelper.AddUser, _addUser);
                 return true;
@@ -49,28 +48,86 @@ namespace QuizeManagement.Repository.Service
 
         }
 
-        public bool CheckUser(LoginModel _loginModel)
+        public AdminModel CheckAdmin(LoginModel _loginModel)
         {
             try
             {
                 Dictionary<string, object> parameter = new Dictionary<string, object>
                 {
+                    {"@Password",_loginModel.Password},
+                    {"@Email",_loginModel.Email }
+                };
+                AdminModel _adminModel = GenericRepository.CheckingAdminLogin(SpHelper.AdminLogin, parameter);
+
+                return _adminModel;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public RegisterModel CheckUser(LoginModel _loginModel)
+        {
+            string encyPasswd = HashPassword(_loginModel.Password);
+            try
+            {
+
+                Dictionary<string, object> parameter = new Dictionary<string, object>
+                {
+                    {"@Password_hash",encyPasswd},
+                    {"@Email",_loginModel.Email }
+                };
+                RegisterModel _registerModel = GenericRepository.CheckingUserIsValidOrNotLogin(SpHelper.CheckRegisterLogin, parameter);
+
+                return _registerModel;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public string getUserName(LoginModel _loginModel)
+        {
+            Dictionary<string, object> parameter = new Dictionary<string, object>
+                {
                     {"@Password_hash",_loginModel.Password },
                     {"@Email",_loginModel.Email }
                 };
-                DataTable dataTable = GenericRepository.GetSingleDataTable(SpHelper.CheckRegisterLogin, parameter);
-                if (dataTable != null)
+            string UserName = GenericRepository.getUserName(SpHelper.getUser, parameter);
+
+            return UserName;
+
+        }
+
+        public UserModel getUserDetails(int id)
+        {
+
+            Dictionary<string, object> parameter = new Dictionary<string, object>
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
+                    {"@id",id }
+                };
+
+            UserModel _userModel = GenericRepository.GetUserDetails(SpHelper.getUserDetails, parameter);
+            return _userModel;
+        }
+
+        public bool getUserDetailsById(int id)
+        {
+           
+            return true;
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
             {
-                throw ex;
+                if (password != null)
+                {
+                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                    return Convert.ToBase64String(hashedBytes);
+                }
+                return null;
             }
         }
     }

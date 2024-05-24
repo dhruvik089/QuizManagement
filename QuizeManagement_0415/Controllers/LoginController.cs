@@ -30,11 +30,20 @@ namespace QuizeManagement_0415.Controllers
         {
             if (ModelState.IsValid)
             {
-                Session["pass"] = HashPassword(_registerModel.Password);
-                _user.AddUser(_registerModel);
-                return RedirectToAction("Login");
+                if (_user.AddUser(_registerModel))
+                {
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("Email", "Email already exist");
+                    return View();
+                }
             }
-            else { return View(); }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Login()
@@ -47,18 +56,25 @@ namespace QuizeManagement_0415.Controllers
         {
             if (ModelState.IsValid)
             {
-                string encyPasswd = HashPassword(_loginModel.Password);
-                _loginModel.Password = encyPasswd;
+                AdminModel _adminModel = _user.CheckAdmin(_loginModel);
+                RegisterModel _registerModel = _user.CheckUser(_loginModel);
 
-                if (_user.CheckUser(_loginModel))
+                if (_registerModel.Userid > 0 && _adminModel.Username == null)
                 {
-                    return RedirectToAction("Register");
+                    Session["Username"] = _registerModel.Username;
+                    Session["Userid"] = _registerModel.Userid.ToString();
+                    return RedirectToAction("User", "User");
+                }
+                else if (_registerModel.Username == null && _adminModel.Admin_id > 0)
+                {
+                    Session["Username"] = _registerModel.Username;
+                    return RedirectToAction("Admin", "Admin");
                 }
                 else
                 {
-                    return View();
+                    ModelState.AddModelError("Password", "Enter valid email or password");
+                    return View("Login");
                 }
-
             }
             else
             {
@@ -66,18 +82,6 @@ namespace QuizeManagement_0415.Controllers
             }
         }
 
-        private string HashPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                if (password != null)
-                {
-                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                    return Convert.ToBase64String(hashedBytes);
 
-                }
-                return null;
-            }
-        }
     }
 }

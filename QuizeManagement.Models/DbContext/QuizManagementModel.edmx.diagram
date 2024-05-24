@@ -20,6 +20,7 @@
         <AssociationConnector Association="QuizeManagement_0415Model.FK__User_Answ__Quiz___47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="QuizeManagement_0415Model.FK__Result_Ta__User___4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="QuizeManagement_0415Model.FK__User_Answ__User___46E78A0C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuizeManagement_0415Model.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

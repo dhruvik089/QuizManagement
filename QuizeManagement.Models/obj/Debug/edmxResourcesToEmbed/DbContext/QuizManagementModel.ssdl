@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QuizeManagement_0415Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_id" />
+    </Key>
+    <Property Name="Admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="Options_Table">
     <Key>
       <PropertyRef Name="Option_id" />
@@ -173,6 +182,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QuizeManagement_0415ModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Options_Table" EntityType="Self.Options_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Question_Table" EntityType="Self.Question_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Quizzes_Table" EntityType="Self.Quizzes_Table" Schema="dbo" store:Type="Tables" />

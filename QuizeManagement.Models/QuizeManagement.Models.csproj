@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContext\Admin.cs">
+      <DependentUpon>QuizManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbContext\Options_Table.cs">
       <DependentUpon>QuizManagementModel.tt</DependentUpon>
     </Compile>
@@ -84,8 +87,15 @@
       <DependentUpon>QuizManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AdminModel.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
+    <Compile Include="ViewModel\OptionsModel.cs" />
+    <Compile Include="ViewModel\QuestionModel.cs" />
+    <Compile Include="ViewModel\QuizzesModel.cs" />
     <Compile Include="ViewModel\RegisterModel.cs" />
+    <Compile Include="ViewModel\ResultModel.cs" />
+    <Compile Include="ViewModel\UserAnswerModel.cs" />
+    <Compile Include="ViewModel\UserModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -10,6 +10,10 @@ namespace QuizeManagement.Repository.Interface
     public interface IUserInterface
     {
         bool AddUser(RegisterModel _registerModel);
-        bool CheckUser(LoginModel _loginModel);
+        RegisterModel CheckUser(LoginModel _loginModel);
+        AdminModel CheckAdmin(LoginModel _loginModel);
+        string getUserName(LoginModel _loginModel);
+        UserModel getUserDetails(int id);
+        //bool getUserDetails(UserModel _userModel);
     }
 }

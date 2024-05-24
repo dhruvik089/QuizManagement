@@ -8,11 +8,13 @@ namespace QuizeManagement.Models.ViewModel
 {
     public class RegisterModel
     {
+        [Key]
+        public int Userid { get; set; }
+
         [Required(ErrorMessage ="enter Username")]
         [MaxLength(15,ErrorMessage ="Username must be 15 character")]
         [MinLength(4,ErrorMessage ="Username must be 4 character")]
         [RegularExpression(@"^[a-z]+[0-9]+$", ErrorMessage = "Invalid Username.")]
-
         public string Username { get; set; }
 
         [Required(ErrorMessage = "enter Email")]
