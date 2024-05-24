@@ -15,13 +15,13 @@ namespace QuizeManagement_0415.Controllers
 
         public AdminController()
         {
-            _admin =new AdminServices();
+            _admin = new AdminServices();
         }
 
 
         public ActionResult Admin()
         {
-            List<QuizzesModel> quizzesList =  _admin.GetQuizzes();
+            List<QuizzesModel> quizzesList = _admin.GetQuizzes();
             return View(quizzesList);
         }
         public ActionResult Quiz()
@@ -42,9 +42,14 @@ namespace QuizeManagement_0415.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateQuestion(QuestionModel _questionModel)
+        public ActionResult CreateQuestion(List<QustionAddingModel> _QustionAddingModel)
+
         {
+
+            _admin.AddQuestion(_QustionAddingModel);
+
             return View();
+
         }
 
         public ActionResult Update()

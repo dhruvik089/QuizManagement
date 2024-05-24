@@ -162,9 +162,6 @@
     <Content Include="Content\User\img\undraw_profile_2.svg" />
     <Content Include="Content\User\img\undraw_profile_3.svg" />
     <Content Include="Content\User\img\undraw_rocket.svg" />
-    <Content Include="Content\User\js\demo\chart-area-demo.js" />
-    <Content Include="Content\User\js\demo\chart-bar-demo.js" />
-    <Content Include="Content\User\js\demo\chart-pie-demo.js" />
     <Content Include="Content\User\js\demo\datatables-demo.js" />
     <Content Include="Content\User\js\sb-admin-2.js" />
     <Content Include="Content\User\js\sb-admin-2.min.js" />
@@ -172,10 +169,6 @@
     <Content Include="Content\User\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\User\vendor\bootstrap\js\bootstrap.js" />
     <Content Include="Content\User\vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\User\vendor\chart.js\Chart.bundle.js" />
-    <Content Include="Content\User\vendor\chart.js\Chart.bundle.min.js" />
-    <Content Include="Content\User\vendor\chart.js\Chart.js" />
-    <Content Include="Content\User\vendor\chart.js\Chart.min.js" />
     <Content Include="Content\User\vendor\datatables\dataTables.bootstrap4.css" />
     <Content Include="Content\User\vendor\datatables\dataTables.bootstrap4.js" />
     <Content Include="Content\User\vendor\datatables\dataTables.bootstrap4.min.css" />
