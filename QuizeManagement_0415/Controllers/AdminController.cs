@@ -1,8 +1,10 @@
-﻿using QuizeManagement.Models.ViewModel;
+﻿using QuizeManagement.Models.DbContext;
+using QuizeManagement.Models.ViewModel;
 using QuizeManagement.Repository.Interface;
 using QuizeManagement.Repository.Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,17 +13,19 @@ namespace QuizeManagement_0415.Controllers
 {
     public class AdminController : Controller
     {
+        QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+
         IAdminInterface _admin;
 
         public AdminController()
         {
-            _admin =new AdminServices();
+            _admin = new AdminServices();
         }
 
 
         public ActionResult Admin()
         {
-            List<QuizzesModel> quizzesList =  _admin.GetQuizzes();
+            List<QuizzesModel> quizzesList = _admin.GetQuizzes();
             return View(quizzesList);
         }
         public ActionResult Quiz()
@@ -36,7 +40,7 @@ namespace QuizeManagement_0415.Controllers
             return View();
         }
 
-        public ActionResult CreateQuestion(int id,string description,string title)
+        public ActionResult CreateQuestion(int id, string description, string title)
         {
             ViewBag.QuizId = id;
             ViewBag.titles = title;
@@ -55,15 +59,24 @@ namespace QuizeManagement_0415.Controllers
 
         }
 
-        public ActionResult Update()
+        public ActionResult Edit(int id)
         {
-            return View();
+            Quizzes_Table _quizzes = _context.Quizzes_Table.Find(id);
+
+            return View(_quizzes);
         }
 
         [HttpPost]
-        public ActionResult Update(QuizzesModel _quizzesModel)
+        public ActionResult Edit(Quizzes_Table _quizzes)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _quizzes.Updated_at = DateTime.Now;
+                _context.Entry(_quizzes).State = EntityState.Modified;
+                _context.SaveChanges();
+                return RedirectToAction("Admin");
+            }
+            return View(_quizzes);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace QuizeManagement.Models.ViewModel
 {
     public class QuestionOptionViewModel
     {
-        public QuizzesModel Quiz { get; set; } // Assuming you want to associate questions with a quiz
+        public QuizzesModel Quiz { get; set; } 
         public QuestionModel Question { get; set; }
         public List<OptionsModel> Options { get; set; }
     }
