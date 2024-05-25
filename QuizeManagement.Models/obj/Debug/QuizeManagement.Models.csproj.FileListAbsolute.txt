@@ -33,3 +33,4 @@ C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagemen
 C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.CopyComplete
 C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
 C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb
+C:\Dhruvik\DotNET\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.AssemblyReference.cache

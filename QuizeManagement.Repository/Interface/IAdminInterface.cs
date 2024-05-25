@@ -10,7 +10,7 @@ namespace QuizeManagement.Repository.Interface
     public interface IAdminInterface
     {
         QuizzesModel AddQuiz(QuizzesModel _quizzesModel);
-
+        void AddQuestion(List<QustionAddingModel> _QustionAddingModel);
         List<QuizzesModel> GetQuizzes();
     }
 }

@@ -261,7 +261,7 @@
 
         $('#submit').on('click', function () {
             UserData = []; // Clear previous data
-            debugger
+            
             var dynamicObjects = document.querySelectorAll('.dynamic');
             for (var i = 0; i < dynamicObjects.length; i += 6) {
                 var DynamicArrayObject = {}
@@ -280,7 +280,7 @@
             }
             console.log(UserData);
             $.ajax({
-                url: '/Admin/CreateQuestions',
+                url: '/Admin/CreateQuestion',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(UserData),

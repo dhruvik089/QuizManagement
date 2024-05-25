@@ -91,7 +91,9 @@
     <Compile Include="ViewModel\LoginModel.cs" />
     <Compile Include="ViewModel\OptionsModel.cs" />
     <Compile Include="ViewModel\QuestionModel.cs" />
+    <Compile Include="ViewModel\QuestionOptionViewModel.cs" />
     <Compile Include="ViewModel\QuizzesModel.cs" />
+    <Compile Include="ViewModel\QustionAddingModel.cs" />
     <Compile Include="ViewModel\RegisterModel.cs" />
     <Compile Include="ViewModel\ResultModel.cs" />
     <Compile Include="ViewModel\UserAnswerModel.cs" />
