@@ -61,11 +61,17 @@ namespace QuizeManagement_0415.Controllers
         }
 
         public ActionResult StartQuiz(int id)
-        
         {
+            ViewBag.quizID = id;
             List<QuestionModel> questionList = _user.GetQuestionForQuiz(id);
-            
-            return View(questionList);
+            ViewBag.questionId = questionList;
+
+            return View();
+        }
+
+        public ActionResult ConfirmStartQuiz(int id)
+        {
+            return PartialView("_PartialQuestion");
         }
 
         public ActionResult LogOut()
