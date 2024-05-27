@@ -47,6 +47,7 @@ namespace QuizeManagement_0415.Controllers
         [HttpPost]
         public ActionResult CreateQuestion(List<QustionAddingModel> _QustionAddingModel)
 
+
         {
 
             _admin.AddQuestion(_QustionAddingModel);
