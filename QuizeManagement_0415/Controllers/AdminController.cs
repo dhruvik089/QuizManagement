@@ -1,4 +1,5 @@
-﻿using QuizeManagement.Models.DbContext;
+﻿using QuizeManagement.Helper.GenericRepository;
+using QuizeManagement.Models.DbContext;
 using QuizeManagement.Models.ViewModel;
 using QuizeManagement.Repository.Interface;
 using QuizeManagement.Repository.Service;
@@ -37,7 +38,7 @@ namespace QuizeManagement_0415.Controllers
         public ActionResult Quiz(QuizzesModel _quizzesModel)
         {
             _admin.AddQuiz(_quizzesModel);
-            return View();
+            return RedirectToAction("Admin");
         }
 
         public ActionResult CreateQuestion(int id, string description, string title)
@@ -50,7 +51,6 @@ namespace QuizeManagement_0415.Controllers
 
         [HttpPost]
         public ActionResult CreateQuestion(List<QustionAddingModel> _QustionAddingModel)
-
 
         {
 
@@ -79,5 +79,22 @@ namespace QuizeManagement_0415.Controllers
             }
             return View(_quizzes);
         }
+
+        public ActionResult UpdateQuestion(int id)
+        {
+            CustomQuizModel QuizzeModelList = GenericRepository.GetQuizWithQuestionsAndOptions(id);
+            return View(QuizzeModelList);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateQuestion(CustomQuizModel _customQuizModel)
+
+        {
+            GenericRepository.UpdateQuizQuestionAndOptions(_customQuizModel);
+            return Json(new { redirectUrl = Url.Action("Admin") });
+        }
+
+       
+
     }
 }

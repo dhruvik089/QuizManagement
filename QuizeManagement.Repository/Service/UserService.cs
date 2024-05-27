@@ -110,13 +110,7 @@ namespace QuizeManagement.Repository.Service
 
             UserModel _userModel = GenericRepository.GetUserDetails(SpHelper.getUserDetails, parameter);
             return _userModel;
-        }
-
-        public bool getUserDetailsById(int id)
-        {
-           
-            return true;
-        }
+        }     
 
         private string HashPassword(string password)
         {
@@ -130,5 +124,35 @@ namespace QuizeManagement.Repository.Service
                 return null;
             }
         }
+
+        public List<QuestionModel> GetQuestionForQuiz(int quizId)
+        {
+
+
+            Dictionary<string, object> perameter = new Dictionary<string, object>
+            {
+                {  "@QuizId" ,quizId }
+            };
+
+            List<QuestionModel> _customQuizModelList = GenericRepository.getQuestionByQuizId(SpHelper.getQuestionByQuizId, perameter).ToList();
+
+            return _customQuizModelList;
+        }
+
+        public List<OptionsModel> GetOptionForQuestion(int questionId)
+        {
+
+
+            Dictionary<string, object> perameter = new Dictionary<string, object>
+            {
+                {  "@question_Id" ,questionId }
+            };
+
+            List<OptionsModel> _customQuizModelList = GenericRepository.GetOptionForQuestion(SpHelper.getOptionByQuestionId, perameter).ToList();
+
+            return _customQuizModelList;
+        }
+
+      
     }
 }

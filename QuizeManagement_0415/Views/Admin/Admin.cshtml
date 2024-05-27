@@ -50,7 +50,9 @@
                             @Html.ActionLink("Edit", "Edit", "Admin", new { id = @item.Quiz_id, description = @item.Description, title = @item.Title }, htmlAttributes: new { @class = "btn btn-outline-primary" })
 
                             @Html.ActionLink("Delete", "Delete", "Admin", new { id = @item.Quiz_id, description = @item.Description, title = @item.Title }, htmlAttributes: new { @class = "btn btn-outline-primary" })
+                            @*<a href="UpdateQuestion?id=@item.Quiz_id" class="btn btn-outline-success" data-id="@item.Quiz_id">Add Question</a>*@
 
+                            @Html.ActionLink("update Question", "UpdateQuestion", "Admin", new { id = @item.Quiz_id }, htmlAttributes: new { @class = "btn btn-outline-primary" })
                         </td>
 
                     </tr>

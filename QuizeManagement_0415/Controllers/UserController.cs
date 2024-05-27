@@ -30,21 +30,15 @@ namespace QuizeManagement_0415.Controllers
         {
             List<QuizzesModel> quizzesList = _admin.GetQuizzes();
             return View(quizzesList);
-            return View();
         }
         public ActionResult Profile()
         {
 
-            ViewBag.userDetails =_user.getUserDetails(Convert.ToInt32(Session["Userid"]));
+            ViewBag.userDetails = _user.getUserDetails(Convert.ToInt32(Session["Userid"]));
 
-            return View();
+            return View(ViewBag.userDetails);
         }
 
-        public ActionResult LogOut()
-        {
-            LoginSession.LogOut();
-            return View("Login", "Login");
-        }
 
         public ActionResult Update()
         {
@@ -54,7 +48,7 @@ namespace QuizeManagement_0415.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update( User_Table user_Table)
+        public ActionResult Update(User_Table user_Table)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +58,20 @@ namespace QuizeManagement_0415.Controllers
                 return RedirectToAction("Profile");
             }
             return View(user_Table);
+        }
+
+        public ActionResult StartQuiz(int id)
+        
+        {
+            List<QuestionModel> questionList = _user.GetQuestionForQuiz(id);
+            
+            return View(questionList);
+        }
+
+        public ActionResult LogOut()
+        {
+            LoginSession.LogOut();
+            return RedirectToAction("Login", "Login");
         }
 
     }

@@ -592,7 +592,7 @@ namespace QuizeManagement.Helper.GenericRepository
 
                                 QuizzesModel quiz = new QuizzesModel();
 
-                                quiz.Quiz_id =Convert.ToInt32(reader["Quiz_id"].ToString());
+                                quiz.Quiz_id = Convert.ToInt32(reader["Quiz_id"].ToString());
 
                                 quiz.Title = reader["Title"].ToString();
 
@@ -642,6 +642,261 @@ namespace QuizeManagement.Helper.GenericRepository
                 }
             }
         }
+
+        public static CustomQuizModel GetQuizWithQuestionsAndOptions(int quizId)
+        {
+            var quizModelList = new CustomQuizModel();
+            QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+            string connectionString = _context.Database.Connection.ConnectionString;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Get Quiz
+                using (var cmd = new SqlCommand("GetQuizByQuizId", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuizId", quizId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            quizModelList.Quiz_id = (int)reader["Quiz_id"];
+                            quizModelList.Title = reader["Title"].ToString();
+                            quizModelList.Description = reader["Description"].ToString();
+                        }
+                    }
+                }
+
+                // Get Questions
+                quizModelList.Questions = new List<CustomQuestionModel>();
+                using (var cmd = new SqlCommand("GetQuestionsByQuizId", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuizId", quizId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var question = new CustomQuestionModel
+                            {
+                                Question_id = (int)reader["Question_id"],
+                                Quiz_id = (int)reader["Quiz_id"],
+                                Question_txt = reader["Question_txt"].ToString(),
+                                Options = new List<CustomOptionModel>()
+                            };
+
+                            quizModelList.Questions.Add(question);
+                        }
+                    }
+                }
+
+                // Get Options
+                foreach (var question in quizModelList.Questions)
+                {
+                    using (var cmd = new SqlCommand("GetOptionsByQuestionId", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@QuestionId", question.Question_id);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var option = new CustomOptionModel
+                                {
+                                    option_id = (int)reader["option_id"],
+                                    Question_id = (int)reader["Question_id"],
+                                    Option_text = reader["Option_text"].ToString(),
+                                    Is_correct = (bool)reader["Is_correct"]
+                                };
+
+                                question.Options.Add(option);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return quizModelList;
+
+        }
+
+        public static void UpdateQuizQuestionAndOptions(CustomQuizModel quizModel)
+
+        {
+            QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+
+            string connectionString = _context.Database.Connection.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            {
+
+                connection.Open();
+
+                // Update Quiz
+
+                //using (SqlCommand command = new SqlCommand("UpdateQuiz", connection))
+
+                //{
+
+                //    command.CommandType = CommandType.StoredProcedure;
+
+                //    command.Parameters.AddWithValue("@QuizId", quizModel.Quiz_id);  
+
+                //    command.Parameters.AddWithValue("@Title", quizModel.Title);  
+
+                //    command.Parameters.AddWithValue("@Description", quizModel.Description);
+
+                //    command.ExecuteNonQuery();
+
+                //}
+
+                // Update Questions and Options
+
+                foreach (var question in quizModel.Questions)
+
+                {
+
+                    using (var cmd = new SqlCommand("UpdateQuestion", connection))
+
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@QuestionId", question.Question_id);
+
+                        cmd.Parameters.AddWithValue("@QuestionTxt", question.Question_txt);
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+
+                    // Update each Option for the current Question
+
+                    foreach (var option in question.Options)
+
+                    {
+
+                        using (var cmd = new SqlCommand("UpdateOption", connection))
+
+                        {
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@questionId", question.Question_id);
+
+                            cmd.Parameters.AddWithValue("@OptionId", option.option_id);
+
+                            cmd.Parameters.AddWithValue("@OptionText", option.Option_text);
+
+                            cmd.Parameters.AddWithValue("@IsCorrect", option.Is_correct);
+
+                            cmd.ExecuteNonQuery();
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        public static List<QuestionModel> getQuestionByQuizId(string commandText, Dictionary<string, object> parameters)
+        {
+            List<QuestionModel> QuestionModelList = new List<QuestionModel>();
+            QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+            string connectionString = _context.Database.Connection.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(commandText, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.CommandTimeout = 120;
+
+                    if (parameters != null)
+                    {
+                        foreach (var pera in parameters)
+                        {
+                            command.Parameters.AddWithValue(pera.Key, pera.Value);
+                        }
+                    }
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                QuestionModel quiz = new QuestionModel();
+
+                                quiz.Quiz_id = Convert.ToInt32(reader["Quiz_id"].ToString());
+                                quiz.Question_id = Convert.ToInt32(reader["Question_id"].ToString());
+
+                                quiz.Question_txt= reader["Question_txt"].ToString();
+
+                                QuestionModelList.Add(quiz);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return QuestionModelList;
+        }
+
+        public static List<OptionsModel> GetOptionForQuestion(string commandText, Dictionary<string, object> parameters)
+        {
+            List<OptionsModel> QuestionModelList = new List<OptionsModel>();
+            QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+            string connectionString = _context.Database.Connection.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(commandText, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.CommandTimeout = 120;
+
+                    if (parameters != null)
+                    {
+                        foreach (var pera in parameters)
+                        {
+                            command.Parameters.AddWithValue(pera.Key, pera.Value);
+                        }
+                    }
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                OptionsModel _optionsModel = new OptionsModel();
+
+                                _optionsModel.Question_id = Convert.ToInt32(reader["Question_id"].ToString());
+
+                                _optionsModel.Option_text = reader["Question_txt"].ToString();
+
+                                QuestionModelList.Add(_optionsModel);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return QuestionModelList;
+        }
     }
 }
-    

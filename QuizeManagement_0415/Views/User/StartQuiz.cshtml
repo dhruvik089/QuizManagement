@@ -1,0 +1,30 @@
+﻿@model IEnumerable<QuizeManagement.Models.ViewModel.QuestionModel>
+
+
+@{ ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml"; }
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Question</td>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Question_id</td>
+                <td>@item.Question_txt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

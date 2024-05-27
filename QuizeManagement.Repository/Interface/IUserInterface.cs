@@ -14,6 +14,7 @@ namespace QuizeManagement.Repository.Interface
         AdminModel CheckAdmin(LoginModel _loginModel);
         string getUserName(LoginModel _loginModel);
         UserModel getUserDetails(int id);
-        //bool getUserDetails(UserModel _userModel);
+        List<QuestionModel> GetQuestionForQuiz(int quizId);
+        List<OptionsModel> GetOptionForQuestion(int questionId);
     }
 }

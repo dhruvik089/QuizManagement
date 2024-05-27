@@ -43,8 +43,8 @@
 
                         <td>
 
-                            @Html.ActionLink("Start Quiz", "Question", "User", htmlAttributes: new { @class = "btn btn-primary" })
-
+                            @Html.ActionLink("Start Quiz", "StartQuiz", "User", new { id = item.Quiz_id }, htmlAttributes: new { @class = "btn btn-primary startQuiz" })
+                            @*<button class="btn btn-primary startQuiz" value="@item.Quiz_id">Start Quiz</button>*@
                         </td>
 
                     </tr>
@@ -55,3 +55,19 @@
     </table>
 
 </div>
+
+<script>
+
+    $(".startQuiz").on("click", () => {
+        var id = $(this).val();
+        console.log("Button value: " + id);
+        //$.ajax({
+        //    url: '/User/StartQuiz?id=' + id,
+        //    method: 'GET',
+        //    success: (data) = {
+        //        console.log(data)
+        //    }
+        //})
+    })
+
+</script>

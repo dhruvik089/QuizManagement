@@ -17,5 +17,7 @@ namespace QuizeManagement.Helper.SpHelper
         public const string getUserDetails = "getUserDetails";
         public const string GetCreatedQuizList = "GetCreatedQuizList";
         public const string CreateQuiz = "CreateQuiz";
+        public const string getQuestionByQuizId = "getQuestionByQuizId";
+        public const string getOptionByQuestionId = "getOptionByQuestionId";
     }
 }

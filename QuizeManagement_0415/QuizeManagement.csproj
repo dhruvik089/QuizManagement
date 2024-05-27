@@ -2042,9 +2042,11 @@
     <Content Include="Views\Admin\Quiz.cshtml" />
     <Content Include="Views\Admin\CreateQuestion.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\UpdateQuestion.cshtml" />
     <None Include="Views\Shared\_LayoutUserPage.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Update.cshtml" />
+    <Content Include="Views\User\StartQuiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
