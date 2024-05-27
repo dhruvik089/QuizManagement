@@ -1,0 +1,85 @@
+﻿@model QuizeManagement.Models.DbContext.Quizzes_Table
+
+<form method="post">
+
+    <div class="form-horizontal">
+
+        <h3 class="text-center p-3">Update Profile</h3>
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.Quiz_id)
+
+        <div class="container">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 mt-2" })
+
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group" style="display:none">
+
+                @Html.LabelFor(model => model.Created_at, htmlAttributes: new { @class = "control-label col-md-2 mt-2" })
+
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.Created_at, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.Created_at, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group d-flex justify-content-center">
+
+                <div class="col-3">
+
+                    <input type="submit" value="Update" class="btn btn-lg btn-primary mt-3 " />
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+
+<div>
+
+    @Html.ActionLink("Back to Quiz List", "Admin", "Admin", htmlAttributes: new { @class = "btn btn-primary" })
+
+</div>
