@@ -1,9 +1,11 @@
-﻿@model IEnumerable<QuizeManagement.Models.ViewModel.QuestionModel>
-@{ Layout = "~/Views/Shared/_LayoutUserPage.cshtml"; }
+﻿﻿
+@{
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml";
+}
 
-<div class="confirmation-page container-fluid w-25 mt-5">
-    <div class="card d-block info-card">
-        <div class="card">
+<div class="confirmation-page container-fluid  mt-5">
+    <div class=" d-block info-card">
+        <div class="card w-50">
             <h1>Quiz Confirmation</h1>
             <p>This quiz has the following details:</p>
             <ul>
@@ -12,7 +14,7 @@
                 <li>Number of options per question: 4</li>
                 <li>You cannot go back once you have answered a question</li>
             </ul>
-            <a class="btn btn-outline-primary" id="start-quiz">Start Quiz</a>
+            <a class="btn btn-outline-primary" id="start-quiz" onclick="startQuiz()">Start Quiz</a>
         </div>
     </div>
 
@@ -21,28 +23,28 @@
 
         </div>
     </div>
+
+
 </div>
 
+<script>
+    function startQuiz() {
+        console.log("hello");
+        $(".info-card").addClass("d-none");
+            $(".info-card").removeClass("d-block");
 
-<script type="text/javascript">
-    $(document).ready(function () {
+        $(".quiz-card").removeClass("d-none");
+        $(".quiz-card").addClass("d-block");
 
-        $("#start-quiz").on("click", function () {
-            console.log("hello")
 
-            var id = 1
-            console.log(id)
-            $.ajax({
-                url: "/User/ConfirmStartQuiz?id=" + id,
-                method: "GET",
-                datatype: "html",
-                success: function (result) {
+            id = @ViewBag.quizID
+                $.ajax({
+                    url: "/User/ConfirmStartQuiz?id=" + id,
+                dataType : "html",
+                    success: function (result) {
+                      console.log(result);
                     $("#QuestionContainer").html(result)
                 }
             })
-        })
-
-
-    })
+    }
 </script>
-

@@ -1,4 +1,5 @@
-﻿using QuizeManagement.Models.DbContext;
+﻿using QuizeManagement.Helper.SpHelper;
+using QuizeManagement.Models.DbContext;
 using QuizeManagement.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -842,7 +843,7 @@ namespace QuizeManagement.Helper.GenericRepository
                                 quiz.Quiz_id = Convert.ToInt32(reader["Quiz_id"].ToString());
                                 quiz.Question_id = Convert.ToInt32(reader["Question_id"].ToString());
 
-                                quiz.Question_txt= reader["Question_txt"].ToString();
+                                quiz.Question_txt = reader["Question_txt"].ToString();
 
                                 QuestionModelList.Add(quiz);
                             }
@@ -886,8 +887,9 @@ namespace QuizeManagement.Helper.GenericRepository
                                 OptionsModel _optionsModel = new OptionsModel();
 
                                 _optionsModel.Question_id = Convert.ToInt32(reader["Question_id"].ToString());
+                                _optionsModel.Option_id = Convert.ToInt32(reader["Option_id"].ToString());
 
-                                _optionsModel.Option_text = reader["Question_txt"].ToString();
+                                _optionsModel.Option_text = reader["Option_text"].ToString();
 
                                 QuestionModelList.Add(_optionsModel);
                             }
@@ -898,5 +900,97 @@ namespace QuizeManagement.Helper.GenericRepository
 
             return QuestionModelList;
         }
+
+        public static int GetQuestionId(string commandText, Dictionary<string, object> parameters)
+        {
+
+            int questionID = 0;
+            using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
+            {
+                string connectionString = _context.Database.Connection.ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 120;
+
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    QuestionModel QuestionModel = new QuestionModel();
+
+                                    questionID = Convert.ToInt32(reader["Question_id"].ToString());
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return questionID;
+        }
+
+        public static string GetQuestionById(string commandText, Dictionary<string, object> parameters)
+        {
+            string questionText="";
+            using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
+            {
+                string connectionString = _context.Database.Connection.ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 120;
+
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    QuestionModel QuestionModel = new QuestionModel();
+
+                                    questionText = reader["Question_txt"].ToString();
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return questionText;
+        }
+
     }
 }

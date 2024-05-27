@@ -110,7 +110,7 @@ namespace QuizeManagement.Repository.Service
 
             UserModel _userModel = GenericRepository.GetUserDetails(SpHelper.getUserDetails, parameter);
             return _userModel;
-        }     
+        }
 
         private string HashPassword(string password)
         {
@@ -153,6 +153,31 @@ namespace QuizeManagement.Repository.Service
             return _customQuizModelList;
         }
 
-      
+        public int GetQuestionId(int QuizId)
+        {
+            int questionID;
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@QuizId" , QuizId}
+                };
+
+            questionID = GenericRepository.GetQuestionId(SpHelper.GetQuestionID, parameters);
+            return questionID;
+        }
+
+        public string GetQuestionById(int QuestionId)
+        {
+            string question = "";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@questionId" , QuestionId}
+                };
+            question = GenericRepository.GetQuestionById(SpHelper.getQuestionById, parameters);
+
+            return question;
+        }
+
     }
 }

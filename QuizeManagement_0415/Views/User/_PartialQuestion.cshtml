@@ -1,4 +1,76 @@
-﻿
-<div>
-    hello
+﻿@model List<QuizeManagement.Models.ViewModel.OptionsModel>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <h5 class="card-title">Question</h5>
+
+            @*@foreach (var item in ViewBag.Questions)
+                {*@
+
+            <h5> <b> @ViewBag.Questions</b></h5>
+            @*  *@}
+
+            <div class="row">
+
+                @foreach (var item in Model)
+
+                {
+
+                    <div class="col-md-6">
+
+                        <div class="option-border" onclick="document.getElementById('option_@item.Option_id').checked = true;">
+
+                            <div class="form-check d-flex align-items-center">
+
+                                <input class="form-check-input" type="radio" id="option_@item.Option_id" name="options" value="@item.Option_id">
+
+                                <label class="form-check-label mb-0" for="option_@item.Option_id">
+
+                                    @item.Option_text
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+                @{
+                    int questionId = ViewBag.QuestionId;
+                }
+
+                @*@Html.ActionLink("Next", "ConfirmStartQuiz", "User", htmlAttributes: new {@class="btn btn-outline-primary nextbtn"})*@
+
+                <a class="btn btn-outline-primary" id="nextQuestion" onclick="nextQuestion()">Next</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+
+
+
+            const nextQuestion = () => {
+            var questionId = questionId + 1;
+            $.ajax({
+                url: "/user/ConfirmStartQuiz?id=" + questionId,
+                dataType: "html",
+                success: function (result) {
+                    console.log(result);
+                    $(".card-body").html(result)
+
+                })
+        })
+</script>

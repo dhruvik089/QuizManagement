@@ -16,5 +16,7 @@ namespace QuizeManagement.Repository.Interface
         UserModel getUserDetails(int id);
         List<QuestionModel> GetQuestionForQuiz(int quizId);
         List<OptionsModel> GetOptionForQuestion(int questionId);
+        int GetQuestionId(int QuizId);
+        string GetQuestionById(int QuestionId);
     }
 }

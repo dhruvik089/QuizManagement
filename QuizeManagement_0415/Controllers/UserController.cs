@@ -71,7 +71,13 @@ namespace QuizeManagement_0415.Controllers
 
         public ActionResult ConfirmStartQuiz(int id)
         {
-            return PartialView("_PartialQuestion");
+            Session["quizId"] = id;
+            ViewBag.QuestionId = _user.GetQuestionId(id);
+            int questionID = ViewBag.QuestionId;
+            ViewBag.Questions = _user.GetQuestionById(questionID);
+
+            List<OptionsModel> optionList = _user.GetOptionForQuestion(questionID);
+            return PartialView("_PartialQuestion",optionList);
         }
 
         public ActionResult LogOut()
