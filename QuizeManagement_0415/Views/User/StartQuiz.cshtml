@@ -37,12 +37,11 @@
         $(".quiz-card").addClass("d-block");
 
 
-            id = @ViewBag.quizID
+           var id=@ViewBag.questionId
                 $.ajax({
-                    url: "/User/ConfirmStartQuiz?id=" + id,
+                    url: "/User/ConfirmStartQuiz?quetionid=" + id,
                 dataType : "html",
                     success: function (result) {
-                      console.log(result);
                     $("#QuestionContainer").html(result)
                 }
             })

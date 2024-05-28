@@ -2048,6 +2048,7 @@
     <Content Include="Views\User\Update.cshtml" />
     <Content Include="Views\User\StartQuiz.cshtml" />
     <Content Include="Views\User\_PartialQuestion.cshtml" />
+    <Content Include="Views\User\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

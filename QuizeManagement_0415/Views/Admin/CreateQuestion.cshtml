@@ -1,8 +1,6 @@
 ﻿@model QuizeManagement.Models.ViewModel.QustionAddingModel
 
-@{
-    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
-}
+@{ Layout = "~/Views/Shared/_LayoutAdminPage.cshtml"; }
 
 <div class="container mt-5 mb-2">
     <h2>CreateQuestions</h2>
@@ -67,7 +65,7 @@
             </div>
         </div>
         <input type="button" name="submit" id="submit" value="submit" />
-        @*@Html.ActionLink("Submit","Admin", "Admin", htmlAttributes: new {@class="btn btn-outline-success",type="submit"})*@
+
     </form>
 </div>
 
@@ -175,33 +173,40 @@
         $('#submit').on('click', function () {
             UserData = []; // Clear previous data
 
-            var dynamicObjects = document.querySelectorAll('.dynamic');
-            for (var i = 0; i < dynamicObjects.length; i += 6) {
-                var DynamicArrayObject = {}
+            if (this.querySelector > 5) {
+                var dynamicObjects = document.querySelectorAll('.dynamic');
 
-                for (var j = 0; j < 6; j++) {
-                    if (j == 0) {
-                        var quizId = document.getElementById('QuizId').value;
-                        DynamicArrayObject["quizId"] = quizId
+
+                for (var i = 0; i < dynamicObjects.length; i += 6) {
+                    var DynamicArrayObject = {}
+
+                    for (var j = 0; j < 6; j++) {
+                        if (j == 0) {
+                            var quizId = document.getElementById('QuizId').value;
+                            DynamicArrayObject["quizId"] = quizId
+                        }
+                        var element = dynamicObjects[i + j];
+                        var name = element.name;
+                        var value = element.value;
+                        DynamicArrayObject[name] = value;
                     }
-                    var element = dynamicObjects[i + j];
-                    var name = element.name;
-                    var value = element.value;
-                    DynamicArrayObject[name] = value;
+                    UserData.push(DynamicArrayObject);
                 }
-                UserData.push(DynamicArrayObject);
-            }
-            console.log(UserData);
-            $.ajax({
-                url: '/Admin/CreateQuestion',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(UserData),
-                success: function (data) {
-                    console.log(data);
-                }
+                console.log(UserData);
+                $.ajax({
+                    url: '/Admin/CreateQuestion',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(UserData),
+                    success: function (data) {
+                        console.log(data);
+                    }
 
-            })
+                })
+            }
+            else {
+                $('#QuestionValidationMessage').text("Please Add Five Question").addClass('text-danger');
+            }
         });
     });
 </script>

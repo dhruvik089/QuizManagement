@@ -12,5 +12,6 @@ namespace QuizeManagement.Repository.Interface
         QuizzesModel AddQuiz(QuizzesModel _quizzesModel);
         void AddQuestion(List<QustionAddingModel> _QustionAddingModel);
         List<QuizzesModel> GetQuizzes();
+        void DeleteQuizFromDB(int QuizId);
     }
 }

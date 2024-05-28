@@ -1,4 +1,7 @@
 ﻿using QuizeManagement.Helper.GenericRepository;
+using QuizeManagement.Helper.Helper;
+using QuizeManagement.Helper.Session;
+using QuizeManagement.Helpers.Helper;
 using QuizeManagement.Models.DbContext;
 using QuizeManagement.Models.ViewModel;
 using QuizeManagement.Repository.Interface;
@@ -12,6 +15,7 @@ using System.Web.Mvc;
 
 namespace QuizeManagement_0415.Controllers
 {
+    [AdminAuthorize]
     public class AdminController : Controller
     {
         QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
@@ -37,9 +41,23 @@ namespace QuizeManagement_0415.Controllers
         [HttpPost]
         public ActionResult Quiz(QuizzesModel _quizzesModel)
         {
-            _admin.AddQuiz(_quizzesModel);
-            return RedirectToAction("Admin");
+            if (ModelState.IsValid)
+            {
+                _admin.AddQuiz(_quizzesModel);
+                return RedirectToAction("Admin");
+            }
+            else
+            {   
+                return View();
+            }
         }
+
+        public ActionResult DeleteQuiz(int QuizId)
+        {
+            _admin.DeleteQuizFromDB(QuizId);
+            return RedirectToAction("Admin", "Admin");
+        }
+
 
         public ActionResult CreateQuestion(int id, string description, string title)
         {
@@ -94,7 +112,11 @@ namespace QuizeManagement_0415.Controllers
             return Json(new { redirectUrl = Url.Action("Admin") });
         }
 
-       
+        public ActionResult LogOut()
+        {
+            LoginSession.LogOutUser();
+            return RedirectToAction("Login", "Login");
+        }
 
     }
 }

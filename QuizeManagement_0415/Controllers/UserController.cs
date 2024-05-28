@@ -1,8 +1,10 @@
-﻿using QuizeManagement.Models.DbContext;
+﻿using QuizeManagement.Helper.Helper;
+using QuizeManagement.Helper.Session;
+using QuizeManagement.Helpers.Helper;
+using QuizeManagement.Models.DbContext;
 using QuizeManagement.Models.ViewModel;
 using QuizeManagement.Repository.Interface;
 using QuizeManagement.Repository.Service;
-using QuizeManagement_0415.Session;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,6 +16,8 @@ using System.Web.Mvc;
 
 namespace QuizeManagement_0415.Controllers
 {
+    [CustomAutherize]
+
     public class UserController : Controller
     {
         QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
@@ -60,29 +64,54 @@ namespace QuizeManagement_0415.Controllers
             return View(user_Table);
         }
 
+      
         public ActionResult StartQuiz(int id)
         {
+            
             ViewBag.quizID = id;
+            Session["quizId"] = id;
+            ViewBag.userId = Convert.ToInt32(Session["Userid"]);
             List<QuestionModel> questionList = _user.GetQuestionForQuiz(id);
-            ViewBag.questionId = questionList;
+            ViewBag.questionList = questionList;
+            Session["questionId"] = _user.GetQuestionId(id);
+            ViewBag.questionId = _user.GetQuestionId(id);
 
             return View();
         }
 
-        public ActionResult ConfirmStartQuiz(int id)
+        public ActionResult ConfirmStartQuiz(int quetionid)
         {
-            Session["quizId"] = id;
-            ViewBag.QuestionId = _user.GetQuestionId(id);
-            int questionID = ViewBag.QuestionId;
-            ViewBag.Questions = _user.GetQuestionById(questionID);
+            ViewBag.questionId = quetionid;
+            ViewBag.Questions = _user.GetQuestionById(quetionid);
+            List<OptionsModel> optionList = _user.GetOptionForQuestion(quetionid);
+            return PartialView("_PartialQuestion",optionList);  
+        }
 
-            List<OptionsModel> optionList = _user.GetOptionForQuestion(questionID);
-            return PartialView("_PartialQuestion",optionList);
+   
+
+        public JsonResult AddUserAnswers(UserAnswerModel _UserAnswer)
+        {
+            _UserAnswer.User_id= Convert.ToInt32(Session["Userid"]);
+            _UserAnswer.Quiz_id= Convert.ToInt32(Session["quizId"]);
+
+            int isAnswers = _user.SaveUserAnswer(_UserAnswer);
+            return Json(isAnswers, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Result() 
+        {
+            int UserId= Convert.ToInt32(Session["Userid"]);
+            int QuizId= Convert.ToInt32(Session["quizId"]);
+
+            int QuizResultTotalMarks = _user.ResultOfQuizForUser(UserId, QuizId);
+
+            ViewBag.QuizResultTotalMarks = QuizResultTotalMarks;
+            return View();
         }
 
         public ActionResult LogOut()
         {
-            LoginSession.LogOut();
+            LoginSession.LogOutUser();
             return RedirectToAction("Login", "Login");
         }
 

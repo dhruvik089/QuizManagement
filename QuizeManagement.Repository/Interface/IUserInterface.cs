@@ -18,5 +18,8 @@ namespace QuizeManagement.Repository.Interface
         List<OptionsModel> GetOptionForQuestion(int questionId);
         int GetQuestionId(int QuizId);
         string GetQuestionById(int QuestionId);
+        int SaveUserAnswer(UserAnswerModel userAnswerModel);
+        int ResultOfQuizForUser(int UserId, int QuizId);
+        void DeleteQuizFromDB(int QuizId);
     }
 }

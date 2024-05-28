@@ -1,4 +1,5 @@
-﻿using QuizeManagement.Models.ViewModel;
+﻿using QuizeManagement.Helper.Session;
+using QuizeManagement.Models.ViewModel;
 using QuizeManagement.Repository.Interface;
 using QuizeManagement.Repository.Service;
 using System;
@@ -61,13 +62,15 @@ namespace QuizeManagement_0415.Controllers
 
                 if (_registerModel.Userid > 0 && _adminModel.Username == null)
                 {
+                    LoginSession.LoggedInUser = _loginModel.Email;
                     Session["Username"] = _registerModel.Username;
                     Session["Userid"] = _registerModel.Userid.ToString();
                     return RedirectToAction("User", "User");
                 }
                 else if (_registerModel.Username == null && _adminModel.Admin_id > 0)
                 {
-                    Session["Username"] = _registerModel.Username;
+                    LoginSession.LoggedInUser = _loginModel.Email;
+                    Session["Username"] = _adminModel.Username;
                     return RedirectToAction("Admin", "Admin");
                 }
                 else

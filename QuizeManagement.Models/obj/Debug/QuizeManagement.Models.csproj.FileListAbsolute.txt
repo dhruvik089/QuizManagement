@@ -58,3 +58,15 @@ D:\Dhruvik\Temp\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.
 D:\Dhruvik\Temp\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeMan.F4DE9809.Up2Date
 D:\Dhruvik\Temp\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
 D:\Dhruvik\Temp\QuizManagement\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll.config
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.dll
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\QuizeManagement.Models.pdb
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\EntityFramework.dll
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\EntityFramework.xml
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.AssemblyReference.cache
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.CoreCompileInputs.cache
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.csproj.CopyComplete
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.dll
+C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Models\obj\Debug\QuizeManagement.Models.pdb

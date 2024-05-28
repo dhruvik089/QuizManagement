@@ -69,6 +69,15 @@ namespace QuizeManagement.Repository.Service
             }
 
         }
+        public void DeleteQuizFromDB(int QuizId)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"@QuizId" ,QuizId},
+            };
+
+            GenericRepository.DeleteQuizFromDB(SpHelper.DeleteQuize, parameters);
+        }
 
     }
 }

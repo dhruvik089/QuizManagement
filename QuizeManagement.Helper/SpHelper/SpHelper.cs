@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace QuizeManagement.Helper.SpHelper
 {
@@ -21,5 +20,9 @@ namespace QuizeManagement.Helper.SpHelper
         public const string getOptionByQuestionId = "getOptionByQuestionId";
         public const string GetQuestionID = "GetQuestionID";
         public const string getQuestionById = "getQuestionById";
+        public const string DeleteQuize = "DeleteQuize";
+        public const string ShowResult = "ShowResult";
+        public const string SaveUserAnswer = "SaveUserAnswer";
+        public const string ShowQuizResult = "ShowQuizResult";
     }
 }

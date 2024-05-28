@@ -179,5 +179,79 @@ namespace QuizeManagement.Repository.Service
             return question;
         }
 
+        public int SaveUserAnswer(UserAnswerModel userAnswerModel)
+        {
+            try
+            {
+                UserAnswerModel userAnswer = new UserAnswerModel();
+                int userId = Convert.ToInt32(userAnswerModel.User_id);
+                int questionId = Convert.ToInt32(userAnswerModel.Question_id);
+                int answerId = Convert.ToInt32(userAnswerModel.Answer_id);
+                int quizId = Convert.ToInt32(userAnswerModel.Quiz_id);
+                int selectedOptionId = Convert.ToInt32(userAnswerModel.Selected_Option_id);
+
+                
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                     { "@user_id" , userId },
+                     { "@quiz_id" , quizId },
+                     { "@selected_option_id" , selectedOptionId },
+                     { "@question_id" , questionId }                     
+                };
+
+                int rowAffected = GenericRepository.AddQuestionAnswerGiveByUser(SpHelper.SaveUserAnswer, parameters);
+                return rowAffected;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int ResultOfQuizForUser(int UserId, int QuizId)
+        {
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"@UserId", UserId},
+                {"@quiz_id",QuizId }
+            };
+            int ResultOfUser = GenericRepository.ResultOfQuizForUser(SpHelper.ShowQuizResult, parameters);
+            int TotalMarks = CalculateAnswers(ResultOfUser);
+
+            return TotalMarks;
+        }
+        public static int CalculateAnswers(int ResultOfUser)
+        {
+            int Result = ResultOfUser * 10;
+            return Result;
+        }
+
+        public void DeleteQuizFromDB(int QuizId)
+        {
+         
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"@QuizId" ,QuizId},
+            };
+
+            GenericRepository.DeleteQuizFromDB(SpHelper.DeleteQuize, parameters);
+        }
+
+
+        public void InsertResultInData(int UserId, int QuizId)
+        {
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                {"@UserId", UserId},
+                {"@quiz_id",QuizId }
+            };
+
+          int a=  GenericRepository.ResultOfQuizForUser(SpHelper.ShowQuizResult, parameters);
+        }
+
     }
 }

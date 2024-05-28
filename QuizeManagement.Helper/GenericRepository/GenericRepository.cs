@@ -949,7 +949,7 @@ namespace QuizeManagement.Helper.GenericRepository
 
         public static string GetQuestionById(string commandText, Dictionary<string, object> parameters)
         {
-            string questionText="";
+            string questionText = "";
             using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
             {
                 string connectionString = _context.Database.Connection.ConnectionString;
@@ -990,6 +990,101 @@ namespace QuizeManagement.Helper.GenericRepository
             }
 
             return questionText;
+        }
+
+        public static int AddQuestionAnswerGiveByUser(string commandText, Dictionary<string, object> parameters)
+        {
+            int row_Affected = 0;
+            using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
+            {
+                string connectionString = _context.Database.Connection.ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 120;
+
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+                        row_Affected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            return row_Affected;
+        }
+
+        public static int ResultOfQuizForUser(string commandText, Dictionary<string, object> parameters)
+        {
+            int CorrectAnswers = 0;
+            using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
+            {
+                string connectionString = _context.Database.Connection.ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 120;
+
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Check if there are any rows returned
+                            if (reader.HasRows)
+                            {
+                                // Read each row
+                                while (reader.Read())
+                                {
+
+                                    CorrectAnswers = Convert.ToInt32(reader["correctAnswer"].ToString());
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return CorrectAnswers;
+        }
+
+        public static void DeleteQuizFromDB(string storedProcedureName, Dictionary<string, object> parameters)
+        {
+            QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities();
+            string connectionString = _context.Database.Connection.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    foreach (var parameter in parameters)
+                    {
+                        command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }

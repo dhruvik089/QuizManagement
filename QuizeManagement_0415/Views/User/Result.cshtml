@@ -1,0 +1,39 @@
+﻿@{ ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml"; }
+
+<div class="container mx-auto mt-5">
+
+    <table class="table-bordered table">
+        <thead>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Total Mark :</b></td>
+                <td>
+                    <h3>
+                        @ViewBag.QuizResultTotalMarks
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td><b> Status : </b></td>
+                <td>
+                    @if (ViewBag.QuizResultTotalMarks > 20)
+                    {
+                        <h3 class="text-success">Pass</h3>
+                    }
+                    else
+                    {
+                        <h3 class="text-danger">Fail</h3>
+
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        @Html.ActionLink("Back to Home", "User", "User", htmlAttributes: new { @class = "btn btn-outline-primary text-decoration-none" })
+</div>
