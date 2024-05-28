@@ -33,6 +33,7 @@ namespace QuizeManagement_0415.Controllers
         public ActionResult User()
         {
             List<QuizzesModel> quizzesList = _admin.GetQuizzes();
+            ViewBag.UserAttemptOrNot = Convert.ToInt32(Session["UserAttemptOrNot"]);
             return View(quizzesList);
         }
         public ActionResult Profile()
@@ -95,6 +96,10 @@ namespace QuizeManagement_0415.Controllers
             _UserAnswer.Quiz_id= Convert.ToInt32(Session["quizId"]);
 
             int isAnswers = _user.SaveUserAnswer(_UserAnswer);
+            int temp = _user.UserAttemptOrNot(Convert.ToInt32(Session["Userid"]), Convert.ToInt32(Session["quizId"]));
+
+            Session["UserAttemptOrNot"]=temp;
+
             return Json(isAnswers, JsonRequestBehavior.AllowGet);
         }
 

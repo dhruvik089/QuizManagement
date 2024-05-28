@@ -21,5 +21,6 @@ namespace QuizeManagement.Repository.Interface
         int SaveUserAnswer(UserAnswerModel userAnswerModel);
         int ResultOfQuizForUser(int UserId, int QuizId);
         void DeleteQuizFromDB(int QuizId);
+        int UserAttemptOrNot(int UserId, int QuizId);
     }
 }

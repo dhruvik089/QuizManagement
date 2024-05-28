@@ -1087,5 +1087,48 @@ namespace QuizeManagement.Helper.GenericRepository
             }
         }
 
+        public static int UserAttemptOrNot(string commandText, Dictionary<string, object> parameters)
+        {
+            int Answers = 0;
+            using (QuizeManagement_0415Entities _context = new QuizeManagement_0415Entities())
+            {
+                string connectionString = _context.Database.Connection.ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 120;
+
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Check if there are any rows returned
+                            if (reader.HasRows)
+                            {
+                                // Read each row
+                                while (reader.Read())
+                                {
+
+                                    Answers = Convert.ToInt32(reader["countUserAttempt"].ToString());
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return Answers;
+        }
+
     }
 }

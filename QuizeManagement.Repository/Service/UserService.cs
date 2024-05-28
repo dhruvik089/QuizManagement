@@ -252,6 +252,17 @@ namespace QuizeManagement.Repository.Service
 
           int a=  GenericRepository.ResultOfQuizForUser(SpHelper.ShowQuizResult, parameters);
         }
+        public int UserAttemptOrNot(int UserId, int QuizId)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                 {"@userId", UserId},
+                {"@quizId",QuizId }
+            };
 
+            int a = GenericRepository.UserAttemptOrNot(SpHelper.UserAttemptOrNot, parameters);
+
+            return a;
+        }
     }
 }

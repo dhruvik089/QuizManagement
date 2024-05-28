@@ -24,5 +24,6 @@ namespace QuizeManagement.Helper.SpHelper
         public const string ShowResult = "ShowResult";
         public const string SaveUserAnswer = "SaveUserAnswer";
         public const string ShowQuizResult = "ShowQuizResult";
+        public const string UserAttemptOrNot = "UserAttemptOrNot";
     }
 }

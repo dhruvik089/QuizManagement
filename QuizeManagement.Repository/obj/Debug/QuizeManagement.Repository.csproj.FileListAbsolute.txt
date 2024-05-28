@@ -88,3 +88,14 @@ C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Repository\bin\Deb
 C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Repository\bin\Debug\System.Web.Razor.xml
 C:\Users\sit415\Downloads\QuizManagement-main\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.Mvc.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.Razor.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.Mvc.xml
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.xml
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.Razor.xml
+D:\Dhruvik\QuizManagement\QuizeManagement.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
